@@ -107,19 +107,15 @@
   <header class="hero" id="home" aria-label="Sampul Undangan">
     <div class="hero-inner container">
       <span class="badge">Undangan Pernikahan</span>
-      <h1 class="names">[Nama Mempelai 1] <span class="and">&amp;</span> [Nama Mempelai 2]</h1>
-      <p class="date">Minggu, 12 Oktober 2025 • [Nama Gedung/Halaman] – [Kota]</p>
+      <h1 class="names">Tri Wantoro <span class="and">&amp;</span> Chusnul Maisah</h1>
+      <p class="date">Minggu, 28 Desember 2025 • Bayan Indah</p>
 
       <div class="hero-card" role="group" aria-label="Detail singkat acara">
         <div class="item"><strong>Akad</strong><br>08.00 WIB</div>
         <div class="item"><strong>Resepsi</strong><br>11.00 – 14.00 WIB</div>
-        <div class="item"><strong>Dress code</strong><br>Krem / Earth tone</div>
+  
       </div>
 
-      <div style="margin-top:1.6rem; display:flex; gap:.6rem; justify-content:center; flex-wrap:wrap">
-        <a class="btn btn-primary" href="#rsvp">Konfirmasi Kehadiran</a>
-        <a class="btn btn-ghost" href="#location">Lihat Lokasi</a>
-      </div>
 
       <!-- Countdown -->
       <div class="card container" style="margin-top:2rem; display:inline-block">
@@ -159,7 +155,7 @@
         <div class="card">
           <h3 class="couple-name" style="font-size:1.3rem">Akad Nikah</h3>
           <ul class="timeline">
-            <li><span class="dot" aria-hidden="true"></span><strong>Tanggal</strong>: Minggu, 12 Oktober 2025</li>
+            <li><span class="dot" aria-hidden="true"></span><strong>Tanggal</strong>: Minggu, 28 Desember 2025</li>
             <li><span class="dot" aria-hidden="true"></span><strong>Waktu</strong>: 08.00 WIB</li>
             <li><span class="dot" aria-hidden="true"></span><strong>Tempat</strong>: [Nama Masjid/Gedung], [Alamat Singkat]</li>
           </ul>
@@ -167,7 +163,7 @@
         <div class="card">
           <h3 class="couple-name" style="font-size:1.3rem">Resepsi</h3>
           <ul class="timeline">
-            <li><span class="dot" aria-hidden="true"></span><strong>Tanggal</strong>: Minggu, 12 Oktober 2025</li>
+            <li><span class="dot" aria-hidden="true"></span><strong>Tanggal</strong>: Minggu, 28 Desember 2025</li>
             <li><span class="dot" aria-hidden="true"></span><strong>Waktu</strong>: 11.00 – 14.00 WIB</li>
             <li><span class="dot" aria-hidden="true"></span><strong>Tempat</strong>: [Nama Gedung/Halaman], [Alamat Singkat]</li>
           </ul>
@@ -299,24 +295,27 @@
       waTujuan: '6281234567890' // tanpa +; ganti nomor WA panitia
     };
 
-    // === Countdown ===
-    const elCountdown = document.getElementById('countdown');
-    const target = new Date(acara.tanggal).getTime();
-    function tick(){
-      const now = Date.now();
-      const dist = target - now;
-      if(dist <= 0){
-        elCountdown.textContent = 'Acara sedang berlangsung / telah selesai.';
-        clearInterval(timer);
-        return;
-      }
-      const d = Math.floor(dist / (1000*60*60*24));
-      const h = Math.floor((dist % (1000*60*60*24)) / (1000*60*60));
-      const m = Math.floor((dist % (1000*60*60)) / (1000*60));
-      const s = Math.floor((dist % (1000*60)) / 1000);
-      elCountdown.textContent = `Menuju hari bahagia: ${d} hari ${h} jam ${m} menit ${s} detik`;
-    }
-    const timer = setInterval(tick, 1000); tick();
+// === Countdown ===
+const elCountdown = document.getElementById('countdown');
+
+// Ganti langsung ke 28 Desember 2025 jam 00:00
+const target = new Date("2025-12-28T00:00:00").getTime();
+
+function tick(){
+  const now = Date.now();
+  const dist = target - now;
+  if(dist <= 0){
+    elCountdown.textContent = 'Acara sedang berlangsung / telah selesai.';
+    clearInterval(timer);
+    return;
+  }
+  const d = Math.floor(dist / (1000*60*60*24));
+  const h = Math.floor((dist % (1000*60*60*24)) / (1000*60*60));
+  const m = Math.floor((dist % (1000*60*60)) / (1000*60));
+  const s = Math.floor((dist % (1000*60)) / 1000);
+  elCountdown.textContent = `Menuju hari bahagia: ${d} hari ${h} jam ${m} menit ${s} detik`;
+}
+const timer = setInterval(tick, 1000); tick();
 
     // === WhatsApp RSVP ===
     const wa = document.getElementById('waLink');
