@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Undangan Pernikahan – [Nama Mempelai]</title>
+  <meta name="description" content="Undangan pernikahan [Nama Mempelai] – [Tanggal Acara] di [Lokasi]." />
+  <meta property="og:title" content="Undangan Pernikahan – [Nama Mempelai]" />
+  <meta property="og:description" content="Kehadiran Anda merupakan kehormatan bagi kami." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="" /> <!-- Opsional: URL gambar share -->
+  <meta name="theme-color" content="#efe8db" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      /* Palet krem */
+      --cream-50:#f9f6f1;
+      --cream-100:#f5efe4;
+      --cream-200:#efe8db;
+      --cream-300:#e6dcc9;
+      --brown-600:#7a5b40;
+      --brown-700:#5f4633;
+      --accent:#b6966b; /* emas kecokelatan */
+      --text:#3b2f26;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      color:var(--text);
+      background:linear-gradient(180deg,var(--cream-50),var(--cream-100));
+      line-height:1.6;
+    }
+    img{max-width:100%;display:block}
+    a{color:var(--brown-700);text-underline-offset:3px}
+
+    /* Container */
+    .container{width:min(1100px,92%);margin-inline:auto}
+
+    /* Hero */
+    .hero{position:relative;min-height:88vh;display:grid;place-items:center;overflow:hidden;background:radial-gradient(60% 60% at 50% 20%, var(--cream-200), transparent 60%), var(--cream-50);}
+    .hero-inner{text-align:center;padding:7rem 1rem}
+    .badge{display:inline-block;padding:.5rem 1rem;background:var(--cream-200);border:1px solid #e7dcc9;border-radius:999px;color:var(--brown-700);letter-spacing:.08em;font-size:.8rem}
+    h1{font-family:"Playfair Display", serif;font-size:clamp(2.2rem,5vw,4rem);margin:.8rem 0 0;color:var(--brown-700)}
+    .names{font-family:"Playfair Display", serif;font-weight:700;font-size:clamp(2.6rem,6vw,4.8rem);letter-spacing:.02em;color:var(--brown-700)}
+    .and{font-weight:400;color:var(--accent)}
+    .date{margin-top:1rem;font-size:1.05rem;color:#6c5847}
+    .hero-card{margin-top:2.2rem;display:inline-flex;gap:1rem;padding:1rem;background:rgba(255,255,255,.7);backdrop-filter:blur(6px);border:1px solid #eadfcd;border-radius:1.25rem}
+    .hero-card .item{padding:.6rem 1rem;border-radius:.9rem;background:var(--cream-50);border:1px dashed #e8dcc7}
+
+    /* Buttons */
+    .btn{appearance:none;border:0;border-radius:999px;padding:.9rem 1.2rem;font-weight:600;cursor:pointer;transition:.2s transform,.2s box-shadow;box-shadow:0 6px 18px rgba(0,0,0,.06);}
+    .btn:hover{transform:translateY(-1px)}
+    .btn:active{transform:translateY(0)}
+    .btn-primary{background:var(--brown-700);color:white}
+    .btn-ghost{background:transparent;color:var(--brown-700);border:1px solid #d8cbb6}
+
+    /* Section */
+    section{padding:4.5rem 0}
+    .section-title{font-family:"Playfair Display", serif;font-size:clamp(1.6rem,3.5vw,2.4rem);margin:0 0 1rem;color:var(--brown-700)}
+    .section-sub{color:#7d6a58;margin:0 0 2rem}
+    .card{background:var(--cream-50);border:1px solid #e9dfcc;border-radius:1.5rem;padding:1.5rem}
+    .grid{display:grid;gap:1.2rem}
+    @media(min-width:800px){.grid-2{grid-template-columns:1fr 1fr}.grid-3{grid-template-columns:repeat(3,1fr)}}
+
+    /* Couple */
+    .avatar{width:160px;height:160px;border-radius:50%;object-fit:cover;border:6px solid var(--cream-50);box-shadow:0 10px 26px rgba(0,0,0,.08)}
+    .couple-card{text-align:center;padding:2rem}
+    .couple-name{font-family:"Playfair Display", serif;font-size:1.6rem;margin:.8rem 0 .3rem;color:var(--brown-700)}
+    .parents{font-size:.95rem;color:#7a6756}
+
+    /* Timeline */
+    .timeline{position:relative;margin:0;padding:0;list-style:none}
+    .timeline::before{content:"";position:absolute;left:10px;top:0;bottom:0;width:2px;background:#e6dcc9}
+    .timeline li{position:relative;padding-left:2.2rem;margin-bottom:1.2rem}
+    .dot{position:absolute;left:2px;top:.3rem;width:16px;height:16px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px #efe8db}
+
+    /* Gallery */
+    .gallery{display:grid;gap:.8rem;grid-template-columns:repeat(2,1fr)}
+    @media(min-width:720px){.gallery{grid-template-columns:repeat(4,1fr)}}
+    .gallery img{border-radius:1rem;border:1px solid #eadfcd}
+
+    /* RSVP */
+    form{display:grid;gap:.8rem}
+    input, textarea, select{width:100%;padding:.8rem 1rem;border:1px solid #e2d6c2;border-radius:.8rem;background:white}
+    label{font-weight:600;color:#6b5a4a}
+    .muted{color:#897761;font-size:.95rem}
+
+    /* Footer */
+    footer{padding:2.2rem 0;background:var(--cream-200);border-top:1px solid #e6dcc9;text-align:center;color:#6c5847}
+
+    /* Small flourishes */
+    .divider{height:1px;background:linear-gradient(90deg,transparent, #e6dcc9, transparent);margin:2.2rem 0}
+
+    /* Back-to-top */
+    .to-top{position:fixed;right:1rem;bottom:1rem;opacity:0;pointer-events:none;transition:.25s;}
+    .to-top.show{opacity:1;pointer-events:auto}
+  </style>
+</head>
+<body>
+  <!-- HERO -->
+  <header class="hero" id="home" aria-label="Sampul Undangan">
+    <div class="hero-inner container">
+      <span class="badge">Undangan Pernikahan</span>
+      <h1 class="names">[Nama Mempelai 1] <span class="and">&amp;</span> [Nama Mempelai 2]</h1>
+      <p class="date">Minggu, 12 Oktober 2025 • [Nama Gedung/Halaman] – [Kota]</p>
+
+      <div class="hero-card" role="group" aria-label="Detail singkat acara">
+        <div class="item"><strong>Akad</strong><br>08.00 WIB</div>
+        <div class="item"><strong>Resepsi</strong><br>11.00 – 14.00 WIB</div>
+        <div class="item"><strong>Dress code</strong><br>Krem / Earth tone</div>
+      </div>
+
+      <div style="margin-top:1.6rem; display:flex; gap:.6rem; justify-content:center; flex-wrap:wrap">
+        <a class="btn btn-primary" href="#rsvp">Konfirmasi Kehadiran</a>
+        <a class="btn btn-ghost" href="#location">Lihat Lokasi</a>
+      </div>
+
+      <!-- Countdown -->
+      <div class="card container" style="margin-top:2rem; display:inline-block">
+        <div id="countdown" aria-live="polite" style="font-weight:600; font-size:1.05rem; text-align:center">Menghitung waktu…</div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Couple -->
+    <section class="container" id="couple">
+      <h2 class="section-title">Bismillahirrahmanirrahim</h2>
+      <p class="section-sub">Dengan memohon rahmat dan ridho Allah SWT, kami bermaksud menyelenggarakan akad dan resepsi pernikahan putra-putri kami.</p>
+
+      <div class="grid grid-2">
+        <article class="card couple-card">
+          <img class="avatar" src="https://images.unsplash.com/photo-1527980965255-d3b416303d12?q=80&w=600&auto=format&fit=crop" alt="Foto [Mempelai 1]"/>
+          <h3 class="couple-name">[Nama Lengkap Mempelai 1]</h3>
+          <p class="parents">Putra/Putri dari Bpk. [Ayah] & Ibu [Ibu]</p>
+          <p class="muted">“Kalimat singkat tentang doa/harapan.”</p>
+        </article>
+        <article class="card couple-card">
+          <img class="avatar" src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=600&auto=format&fit=crop" alt="Foto [Mempelai 2]"/>
+          <h3 class="couple-name">[Nama Lengkap Mempelai 2]</h3>
+          <p class="parents">Putra/Putri dari Bpk. [Ayah] & Ibu [Ibu]</p>
+          <p class="muted">“Kalimat singkat tentang doa/harapan.”</p>
+        </article>
+      </div>
+    </section>
+
+    <div class="divider container" role="separator" aria-hidden="true"></div>
+
+    <!-- Event Details -->
+    <section class="container" id="event">
+      <h2 class="section-title">Rangkaian Acara</h2>
+      <div class="grid grid-2">
+        <div class="card">
+          <h3 class="couple-name" style="font-size:1.3rem">Akad Nikah</h3>
+          <ul class="timeline">
+            <li><span class="dot" aria-hidden="true"></span><strong>Tanggal</strong>: Minggu, 12 Oktober 2025</li>
+            <li><span class="dot" aria-hidden="true"></span><strong>Waktu</strong>: 08.00 WIB</li>
+            <li><span class="dot" aria-hidden="true"></span><strong>Tempat</strong>: [Nama Masjid/Gedung], [Alamat Singkat]</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3 class="couple-name" style="font-size:1.3rem">Resepsi</h3>
+          <ul class="timeline">
+            <li><span class="dot" aria-hidden="true"></span><strong>Tanggal</strong>: Minggu, 12 Oktober 2025</li>
+            <li><span class="dot" aria-hidden="true"></span><strong>Waktu</strong>: 11.00 – 14.00 WIB</li>
+            <li><span class="dot" aria-hidden="true"></span><strong>Tempat</strong>: [Nama Gedung/Halaman], [Alamat Singkat]</li>
+          </ul>
+        </div>
+      </div>
+      <p class="muted" style="margin-top:1rem">Mohon maaf apabila terdapat kekurangan pada penyampaian undangan ini.</p>
+    </section>
+
+    <!-- Location / Maps -->
+    <section class="container" id="location">
+      <h2 class="section-title">Lokasi Acara</h2>
+      <div class="grid grid-2">
+        <div class="card">
+          <p><strong>[Nama Venue]</strong><br>[Alamat lengkap, Kecamatan, Kota, Provinsi]</p>
+          <p class="muted">Klik tombol di samping untuk membuka Google Maps.</p>
+          <div style="display:flex;gap:.6rem;flex-wrap:wrap">
+            <a class="btn btn-primary" target="_blank" rel="noopener" href="https://maps.google.com/?q=-6.200000,106.816666">Buka di Google Maps</a>
+            <a class="btn btn-ghost" href="#rsvp">Konfirmasi Kehadiran</a>
+          </div>
+        </div>
+        <div class="card" style="padding:0;overflow:hidden">
+          <!-- Ganti src berikut dengan embed maps tempat Anda -->
+          <iframe title="Peta Lokasi" width="100%" height="320" style="border:0" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.7947878067896!2d106.827152!3d-6.159642!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e6a1d40d3c9a7cb%3A0x9b1b2af0f8a75a2d!2sJakarta%20Cathedral!5e0!3m2!1sen!2sid!4v1715850000000"></iframe>
+        </div>
+      </div>
+    </section>
+
+    <!-- Gallery -->
+    <section class="container" id="gallery">
+      <h2 class="section-title">Galeri</h2>
+      <p class="section-sub">Tambahkan beberapa momen berharga sebelum hari bahagia.</p>
+      <div class="gallery">
+        <img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?q=80&w=800&auto=format&fit=crop" alt="Foto prewedding 1" />
+        <img src="https://images.unsplash.com/photo-1520975916090-3105956dac38?q=80&w=800&auto=format&fit=crop" alt="Foto prewedding 2" />
+        <img src="https://images.unsplash.com/photo-1520869562399-e772f042f422?q=80&w=800&auto=format&fit=crop" alt="Foto prewedding 3" />
+        <img src="https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=800&auto=format&fit=crop" alt="Foto prewedding 4" />
+      </div>
+    </section>
+
+    <!-- RSVP -->
+    <section class="container" id="rsvp">
+      <h2 class="section-title">RSVP</h2>
+      <p class="section-sub">Mohon konfirmasi kehadiran Anda untuk mempermudah persiapan kami.</p>
+
+      <div class="grid grid-2">
+        <div class="card">
+          <!-- Opsi 1: Kirim WhatsApp -->
+          <h3 style="margin-top:0">Konfirmasi via WhatsApp</h3>
+          <p class="muted">Tombol ini akan membuka WhatsApp dengan pesan yang sudah terisi.</p>
+          <a class="btn btn-primary" target="_blank" rel="noopener" id="waLink">
+            Buka WhatsApp RSVP
+          </a>
+        </div>
+        <div class="card">
+          <!-- Opsi 2: Form HTML statis (tanpa backend) yang membuat email -->
+          <h3 style="margin-top:0">Form RSVP (Email)</h3>
+          <form id="rsvpForm">
+            <div>
+              <label for="nama">Nama</label>
+              <input id="nama" name="nama" placeholder="Nama lengkap" required />
+            </div>
+            <div>
+              <label for="jumlah">Jumlah Tamu</label>
+              <select id="jumlah" name="jumlah">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+              </select>
+            </div>
+            <div>
+              <label for="kehadiran">Kehadiran</label>
+              <select id="kehadiran" name="kehadiran">
+                <option value="Hadir">Hadir</option>
+                <option value="Tidak dapat hadir">Tidak dapat hadir</option>
+              </select>
+            </div>
+            <div>
+              <label for="pesan">Ucapan / Pesan</label>
+              <textarea id="pesan" name="pesan" rows="3" placeholder="Tulis ucapan singkat"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Kirim RSVP via Email</button>
+            <p class="muted">Form ini akan membuka aplikasi email Anda (mailto). Jika ingin penyimpanan otomatis, Anda dapat mengganti dengan Google Form.</p>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Gift / Amplop Digital (opsional) -->
+    <section class="container" id="gift">
+      <h2 class="section-title">Amplop Digital (Opsional)</h2>
+      <div class="grid grid-3">
+        <div class="card">
+          <p><strong>Bank BCA</strong><br>No. Rekening: 1234567890<br>a.n. [Nama Mempelai]</p>
+          <button class="btn btn-ghost" onclick="copyText('1234567890')">Salin Nomor</button>
+        </div>
+        <div class="card">
+          <p><strong>Bank BRI</strong><br>No. Rekening: 9876543210<br>a.n. [Nama Mempelai]</p>
+          <button class="btn btn-ghost" onclick="copyText('9876543210')">Salin Nomor</button>
+        </div>
+        <div class="card">
+          <p><strong>e-Wallet</strong><br>DANA/OVO/Gopay: 0812-xxxx-xxxx</p>
+          <button class="btn btn-ghost" onclick="copyText('0812xxxxxxxx')">Salin Nomor</button>
+        </div>
+      </div>
+      <p class="muted" style="margin-top:1rem">Doa restu merupakan hadiah terindah bagi kami. Terima kasih.</p>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p style="margin:.2rem 0">&copy; <span id="year"></span> [Nama Mempelai] • Terima kasih atas doa dan kehadiran Anda.</p>
+      <p style="margin:.2rem 0"><a href="#home">Kembali ke atas</a></p>
+    </div>
+  </footer>
+
+  <button class="btn btn-primary to-top" id="toTop" aria-label="Kembali ke atas">↑</button>
+
+  <script>
+    // === Personalisasi ===
+    const acara = {
+      tanggal: '2025-10-12T08:00:00+07:00', // ganti sesuai kebutuhan (format ISO dengan zona waktu)
+      venue: '[Nama Venue]',
+      kota: '[Kota]'
+    };
+    const pengantin = {
+      pria: '[Nama Mempelai 1]',
+      wanita: '[Nama Mempelai 2]',
+      waTujuan: '6281234567890' // tanpa +; ganti nomor WA panitia
+    };
+
+    // === Countdown ===
+    const elCountdown = document.getElementById('countdown');
+    const target = new Date(acara.tanggal).getTime();
+    function tick(){
+      const now = Date.now();
+      const dist = target - now;
+      if(dist <= 0){
+        elCountdown.textContent = 'Acara sedang berlangsung / telah selesai.';
+        clearInterval(timer);
+        return;
+      }
+      const d = Math.floor(dist / (1000*60*60*24));
+      const h = Math.floor((dist % (1000*60*60*24)) / (1000*60*60));
+      const m = Math.floor((dist % (1000*60*60)) / (1000*60));
+      const s = Math.floor((dist % (1000*60)) / 1000);
+      elCountdown.textContent = `Menuju hari bahagia: ${d} hari ${h} jam ${m} menit ${s} detik`;
+    }
+    const timer = setInterval(tick, 1000); tick();
+
+    // === WhatsApp RSVP ===
+    const wa = document.getElementById('waLink');
+    function buildWAText(){
+      const text = `Assalamu'alaikum, saya ingin konfirmasi kehadiran untuk acara ${pengantin.pria} & ${pengantin.wanita} pada ${new Date(acara.tanggal).toLocaleDateString('id-ID',{weekday:'long', year:'numeric', month:'long', day:'numeric'})} di ${acara.venue}, ${acara.kota}.\nNama: [Isi Nama]\nJumlah Tamu: [1/2/3/4]\nKeterangan: [Hadir/Tidak hadir]`;
+      return encodeURIComponent(text);
+    }
+    wa.href = `https://wa.me/${pengantin.waTujuan}?text=${buildWAText()}`;
+
+    // === Form RSVP (mailto) ===
+    document.getElementById('rsvpForm').addEventListener('submit', (e) =>{
+      e.preventDefault();
+      const nama = document.getElementById('nama').value.trim();
+      const jumlah = document.getElementById('jumlah').value;
+      const kehadiran = document.getElementById('kehadiran').value;
+      const pesan = document.getElementById('pesan').value.trim();
+      const subject = encodeURIComponent(`RSVP ${pengantin.pria} & ${pengantin.wanita} - ${nama}`);
+      const body = encodeURIComponent(`Nama: ${nama}\nJumlah Tamu: ${jumlah}\nKehadiran: ${kehadiran}\nUcapan/Pesan: ${pesan}`);
+      window.location.href = `mailto:undangan@example.com?subject=${subject}&body=${body}`; // ganti email tujuan
+    });
+
+    // === Copy helper ===
+    function copyText(text){
+      navigator.clipboard.writeText(text).then(()=>{
+        alert('Disalin: ' + text);
+      });
+    }
+
+    // === Footer year ===
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // === Back to top ===
+    const toTop = document.getElementById('toTop');
+    window.addEventListener('scroll', ()=>{
+      if(window.scrollY > 500){ toTop.classList.add('show'); } else { toTop.classList.remove('show'); }
+    });
+    toTop.addEventListener('click', ()=> window.scrollTo({top:0, behavior:'smooth'}));
+  </script>
+</body>
+</html>
