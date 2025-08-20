@@ -8,7 +8,6 @@
   <meta property="og:title" content="Undangan Pernikahan – Tri Wantoro & Chusnul Maisah" />
   <meta property="og:description" content="Kehadiran Anda merupakan kehormatan bagi kami." />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="" /> <!-- Opsional: URL gambar share -->
   <meta name="theme-color" content="#efe8db" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -20,103 +19,189 @@
       --cream-50:#f9f6f1;
       --cream-100:#f5efe4;
       --cream-200:#efe8db;
-      --cream-300:#e6dcc9;
       --brown-600:#7a5b40;
       --brown-700:#5f4633;
       --accent:#b6966b;
       --text:#3b2f26;
     }
     *{box-sizing:border-box}
-    html,body{height:100%}
+    html,body{height:100%;margin:0}
     body{
-      margin:0;
-      font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
       color:var(--text);
       background:linear-gradient(180deg,var(--cream-50),var(--cream-100));
       line-height:1.6;
+      overflow:hidden;
     }
     img{max-width:100%;display:block}
     a{color:var(--brown-700);text-underline-offset:3px}
-
     .container{width:min(1100px,92%);margin-inline:auto}
 
-    /* Hero */
-    .hero{position:relative;min-height:88vh;display:grid;place-items:center;overflow:hidden;background:radial-gradient(60% 60% at 50% 20%, var(--cream-200), transparent 60%), var(--cream-50);}
+    /* === DOOR === */
+    .door-overlay{
+      position:fixed;inset:0;display:flex;justify-content:center;align-items:center;
+      background:url('https://raw.githubusercontent.com/tewetech/tes/refs/heads/main/Background.jpg') center/cover no-repeat;
+      z-index:9999;transition:opacity 1s ease;
+    }
+    .door{
+      text-align:center;
+      background: rgba(255,255,255,0.2);
+      border-radius: 1.5rem;
+      padding:2rem;
+      box-shadow:0 8px 25px rgba(0,0,0,.3);
+      backdrop-filter: blur(10px);
+      border:1px solid rgba(255,255,255,.4);
+    }
+    .door h2{font-family:"Playfair Display", serif;font-size:1.8rem;color:var(--brown-700);text-shadow:0 2px 6px rgba(0,0,0,.2);}
+    .door p{color:var(--brown-700);} /* teks pintu coklat */
+    .btn{
+      appearance:none;border:0;border-radius:999px;padding:.9rem 1.4rem;
+      font-weight:600;cursor:pointer;transition:.25s;box-shadow:0 6px 18px rgba(0,0,0,.15);
+      backdrop-filter:blur(10px);background:rgba(255,255,255,0.15);
+      color:var(--brown-700); /* teks coklat */
+      font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial; /* sama dengan isi undangan */
+      margin-top:1.2rem;
+    }
+    .btn:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(0,0,0,.25)}
+    .btn:active{transform:scale(.97)}
+
+    /* === UNDANGAN === */
+    main{
+      display:none;
+      position: relative;
+      background: url('https://raw.githubusercontent.com/tewetech/tes/refs/heads/main/Background.jpg') center/cover no-repeat;
+      background-attachment: fixed;
+    }
+    main::before{
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(255,255,255,0.2);
+      backdrop-filter: blur(6px);
+      z-index: -1;
+    }
+    .hero{position:relative;min-height:88vh;display:grid;place-items:center;overflow:hidden;}
     .hero-inner{text-align:center;padding:7rem 1rem}
-    .badge{display:inline-block;padding:.5rem 1rem;background:var(--cream-200);border:1px solid #e7dcc9;border-radius:999px;color:var(--brown-700);letter-spacing:.08em;font-size:.8rem}
+    .badge{display:inline-block;padding:.5rem 1rem;background: rgba(255,255,255,0.3); border-radius:999px; color:var(--brown-700); letter-spacing:.08em; font-size:.8rem; backdrop-filter: blur(6px);}
     h1{font-family:"Playfair Display", serif;font-size:clamp(2.2rem,5vw,4rem);margin:.8rem 0 0;color:var(--brown-700)}
     .names{font-family:"Playfair Display", serif;font-weight:700;font-size:clamp(2.6rem,6vw,4.8rem);letter-spacing:.02em;color:var(--brown-700)}
     .and{font-weight:400;color:var(--accent)}
     .date{margin-top:1rem;font-size:1.05rem;color:#6c5847}
-    .hero-card{margin-top:2.2rem;display:inline-flex;gap:1rem;padding:1rem;background:rgba(255,255,255,.7);backdrop-filter:blur(6px);border:1px solid #eadfcd;border-radius:1.25rem}
-    .hero-card .item{padding:.6rem 1rem;border-radius:.9rem;background:var(--cream-50);border:1px dashed #e8dcc7}
 
-    /* Buttons */
-    .btn{appearance:none;border:0;border-radius:999px;padding:.9rem 1.2rem;font-weight:600;cursor:pointer;transition:.2s transform,.2s box-shadow;box-shadow:0 6px 18px rgba(0,0,0,.06);}
-    .btn:hover{transform:translateY(-1px)}
-    .btn:active{transform:translateY(0)}
-    .btn-primary{background:var(--brown-700);color:white}
-    .btn-ghost{background:transparent;color:var(--brown-700);border:1px solid #d8cbb6}
+    .hero-card{
+      margin-top:2.2rem;
+      display:inline-flex;
+      gap:1rem;
+      padding:1rem;
+      background: rgba(255,255,255,0.2);
+      backdrop-filter: blur(8px);
+      border-radius:1.25rem;
+      border:1px solid rgba(255,255,255,0.3);
+    }
+    .hero-card .item{
+      padding:.6rem 1rem;
+      border-radius:.9rem;
+      background: rgba(255,255,255,0.3);
+      border:1px dashed rgba(255,255,255,0.3);
+      backdrop-filter: blur(6px);
+    }
 
     section{padding:4.5rem 0}
     .section-title{font-family:"Playfair Display", serif;font-size:clamp(1.6rem,3.5vw,2.4rem);margin:0 0 1rem;color:var(--brown-700)}
     .section-sub{color:#7d6a58;margin:0 0 2rem}
-    .card{background:var(--cream-50);border:1px solid #e9dfcc;border-radius:1.5rem;padding:1.5rem}
+
+    .card{
+      background: rgba(255,255,255,0.2);
+      border-radius:1.5rem;
+      padding:1.5rem;
+      border:1px solid rgba(255,255,255,0.3);
+      backdrop-filter: blur(8px);
+      box-shadow:0 8px 20px rgba(0,0,0,0.1);
+    }
+
     .grid{display:grid;gap:1.2rem}
     @media(min-width:800px){.grid-2{grid-template-columns:1fr 1fr}.grid-3{grid-template-columns:repeat(3,1fr)}}
 
-    .avatar{width:160px;height:160px;border-radius:50%;object-fit:cover;border:6px solid var(--cream-50);box-shadow:0 10px 26px rgba(0,0,0,.08)}
-    .couple-card{text-align:center;padding:2rem}
+    .avatar{
+      width:160px;
+      height:160px;
+      border-radius:50%;
+      object-fit:cover;
+      border:6px solid rgba(255,255,255,0.2);
+      box-shadow:0 10px 26px rgba(0,0,0,.08);
+      display:block;
+      margin:0 auto;
+    }
+
+    .couple-card{text-align:center;padding:2rem;background: rgba(255,255,255,0.2); border-radius:1.5rem; border:1px solid rgba(255,255,255,0.3); backdrop-filter: blur(8px);}
     .couple-name{font-family:"Playfair Display", serif;font-size:1.6rem;margin:.8rem 0 .3rem;color:var(--brown-700)}
     .parents{font-size:.95rem;color:#7a6756}
 
     .timeline{position:relative;margin:0;padding:0;list-style:none}
-    .timeline::before{content:"";position:absolute;left:10px;top:0;bottom:0;width:2px;background:#e6dcc9}
+    .timeline::before{content:"";position:absolute;left:10px;top:0;bottom:0;width:2px;background:rgba(255,255,255,0.3)}
     .timeline li{position:relative;padding-left:2.2rem;margin-bottom:1.2rem}
-    .dot{position:absolute;left:2px;top:.3rem;width:16px;height:16px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px #efe8db}
-
-    .gallery{display:grid;gap:.8rem;grid-template-columns:repeat(2,1fr)}
-    @media(min-width:720px){.gallery{grid-template-columns:repeat(4,1fr)}}
-    .gallery img{border-radius:1rem;border:1px solid #eadfcd}
+    .dot{position:absolute;left:2px;top:.3rem;width:16px;height:16px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4 rgba(255,255,255,0.2)}
 
     form{display:grid;gap:.8rem}
-    input, textarea, select{width:100%;padding:.8rem 1rem;border:1px solid #e2d6c2;border-radius:.8rem;background:white}
+    input, textarea, select{
+      width:100%;padding:.8rem 1rem;border-radius:.8rem;
+      background: rgba(255,255,255,0.2);
+      border:1px solid rgba(255,255,255,0.3);
+      backdrop-filter: blur(6px);
+      color: var(--text);
+    }
     label{font-weight:600;color:#6b5a4a}
-    .muted{color:#897761;font-size:.95rem}
 
-    footer{padding:2.2rem 0;background:var(--cream-200);border-top:1px solid #e6dcc9;text-align:center;color:#6c5847}
-    .divider{height:1px;background:linear-gradient(90deg,transparent, #e6dcc9, transparent);margin:2.2rem 0}
+    footer{
+      padding:2.2rem 0;
+      text-align:center;
+      color:#6c5847;
+    }
+    footer .container{
+      display:inline-block;
+    }
+
+    .divider{height:1px;background:linear-gradient(90deg,transparent, rgba(255,255,255,0.3), transparent);margin:2.2rem 0}
     .to-top{position:fixed;right:1rem;bottom:1rem;opacity:0;pointer-events:none;transition:.25s;}
     .to-top.show{opacity:1;pointer-events:auto}
   </style>
 </head>
 <body>
-  <!-- HERO -->
-  <header class="hero" id="home" aria-label="Sampul Undangan">
-    <div class="hero-inner container">
-      <span class="badge">Undangan Pernikahan</span>
-      <h1 class="names">Tri Wantoro <span class="and">&amp;</span> Chusnul Maisah</h1>
-      <p class="date">Minggu, 28 Desember 2025</p>
-      <p>Kadipiro, Kota Surakarta, Jawa Tengah</p>
-
-      <div class="hero-card" role="group" aria-label="Detail singkat acara">
-        <div class="item"><strong>Akad</strong><br>08.00 WIB</div>
-        <div class="item"><strong>Resepsi</strong><br>11.00 – 14.00 WIB</div>
-      </div>
-
-      <!-- Countdown -->
-      <div class="card container" style="margin-top:2rem; display:inline-block">
-        <div id="countdown" aria-live="polite" style="font-weight:600; font-size:1.05rem; text-align:center">Menghitung waktu…</div>
-      </div>
+  <!-- DOOR -->
+  <div class="door-overlay" id="door">
+    <div class="door">
+      <h2>Undangan Pernikahan</h2>
+      <p>Tri Wantoro &amp; Chusnul Maisah</p>
+      <button class="btn" id="openBtn">Buka Undangan</button>
     </div>
-  </header>
+  </div>
 
+  <!-- AUDIO -->
+  <audio id="bgMusic" src="https://raw.githubusercontent.com/tewetech/tes/refs/heads/main/Cinta%20Terakhir.mp3" loop></audio>
+
+  <!-- UNDANGAN FULL -->
   <main>
-    <!-- Couple -->
+    <!-- HERO -->
+    <header class="hero" id="home">
+      <div class="hero-inner container">
+        <span class="badge">Undangan Pernikahan</span>
+        <h1 class="names">Tri Wantoro <span class="and">&amp;</span> Chusnul Maisah</h1>
+        <p class="date">Minggu, 28 Desember 2025</p>
+        <p>Kadipiro, Kota Surakarta, Jawa Tengah</p>
+        <div class="hero-card">
+          <div class="item"><strong>Akad</strong><br>08.00 WIB</div>
+          <div class="item"><strong>Resepsi</strong><br>11.00 – 14.00 WIB</div>
+        </div>
+        <div class="card container" style="margin-top:2rem; display:inline-block">
+          <div id="countdown" style="font-weight:600; font-size:1.05rem; text-align:center">Menghitung waktu…</div>
+        </div>
+      </div>
+    </header>
+
+    <!-- COUPLE -->
     <section class="container" id="couple">
       <h2 class="section-title">Bismillahirrahmanirrahim</h2>
       <p class="section-sub">Dengan memohon rahmat dan ridho Allah SWT, kami bermaksud menyelenggarakan akad dan resepsi pernikahan putra-putri kami.</p>
-
       <div class="grid grid-2">
         <article class="card couple-card">
           <img class="avatar" src="https://raw.githubusercontent.com/tewetech/tes/a7572169bf7ef1848c05e5a9ab858ed1f8c07892/Tri.jpg" alt="Foto Tri Wantoro"/>
@@ -133,7 +218,7 @@
 
     <div class="divider container"></div>
 
-    <!-- Event -->
+    <!-- EVENT -->
     <section class="container" id="event">
       <h2 class="section-title">Rangkaian Acara</h2>
       <div class="grid grid-2">
@@ -164,26 +249,21 @@
         <form id="rsvpForm">
           <div>
             <label for="nama">Nama</label>
-            <input id="nama" name="nama" placeholder="Nama lengkap" required />
+            <input id="nama" required />
           </div>
           <div>
             <label for="jumlah">Jumlah Tamu</label>
-            <select id="jumlah" name="jumlah">
-              <option>1</option><option>2</option><option>3</option><option>4</option>
-            </select>
+            <select id="jumlah"><option>1</option><option>2</option><option>3</option></select>
           </div>
           <div>
             <label for="kehadiran">Kehadiran</label>
-            <select id="kehadiran" name="kehadiran">
-              <option value="Hadir">Hadir</option>
-              <option value="Tidak hadir">Tidak hadir</option>
-            </select>
+            <select id="kehadiran"><option value="Hadir">Hadir</option><option value="Tidak hadir">Tidak hadir</option></select>
           </div>
           <div>
             <label for="pesan">Ucapan / Pesan</label>
-            <textarea id="pesan" name="pesan" rows="3" placeholder="Tulis ucapan singkat"></textarea>
+            <textarea id="pesan" rows="3"></textarea>
           </div>
-          <button type="submit" class="btn btn-primary">Kirim via WhatsApp</button>
+          <button type="submit" class="btn" style="background:var(--brown-700);color:white">Kirim via WhatsApp</button>
         </form>
       </div>
     </section>
@@ -191,66 +271,61 @@
 
   <footer>
     <div class="container">
-      <p>&copy; <span id="year"></span> Tri & Chusnul • Terima kasih atas doa dan kehadiran Anda.</p>
-      <p><a href="#home">Kembali ke atas</a></p>
+      © <span id="year"></span> Tri & Chusnul • Terima kasih atas doa dan kehadiran Anda.
     </div>
   </footer>
 
-  <button class="btn btn-primary to-top" id="toTop">↑</button>
+  <button class="btn" id="toTop" style="background:var(--brown-700);color:white;position:fixed;right:1rem;bottom:1rem;opacity:0;pointer-events:none;">↑</button>
 
   <script>
-    // === Config ===
-    const pengantin = {
-      pria: "Tri Wantoro",
-      wanita: "Chusnul Maisah",
-      waTujuan: "6282323624177"
-    };
+    const door = document.getElementById('door');
+    const openBtn = document.getElementById('openBtn');
+    const bgMusic = document.getElementById('bgMusic');
+    const main = document.querySelector('main');
+    openBtn.addEventListener('click', ()=>{
+      bgMusic.play();
+      door.style.opacity="0";
+      setTimeout(()=> door.style.display="none",1000);
+      main.style.display="block";
+      document.body.style.overflow="auto";
+    });
 
-    // === Countdown ===
+    // countdown
     const elCountdown = document.getElementById('countdown');
     const target = new Date("2025-12-28T00:00:00").getTime();
     function tick(){
       const now = Date.now();
       const dist = target - now;
-      if(dist <= 0){
-        elCountdown.textContent = 'Acara sedang berlangsung / telah selesai.';
-        clearInterval(timer);
-        return;
-      }
-      const d = Math.floor(dist / (1000*60*60*24));
-      const h = Math.floor((dist % (1000*60*60*24)) / (1000*60*60));
-      const m = Math.floor((dist % (1000*60*60)) / (1000*60));
-      const s = Math.floor((dist % (1000*60)) / 1000);
-      elCountdown.textContent = `Menuju hari bahagia: ${d} hari ${h} jam ${m} menit ${s} detik`;
+      if(dist <= 0){ elCountdown.textContent='Acara sedang berlangsung / selesai.'; clearInterval(timer); return; }
+      const d=Math.floor(dist/(1000*60*60*24));
+      const h=Math.floor((dist%(1000*60*60*24))/(1000*60*60));
+      const m=Math.floor((dist%(1000*60*60))/(1000*60));
+      const s=Math.floor((dist%(1000*60))/1000);
+      elCountdown.textContent=`Menuju hari bahagia: ${d} hari ${h} jam ${m} menit ${s} detik`;
     }
-    const timer = setInterval(tick, 1000); tick();
+    const timer=setInterval(tick,1000); tick();
 
-    // === Form RSVP to WhatsApp ===
-    document.getElementById('rsvpForm').addEventListener('submit', (e) =>{
+    // RSVP to WhatsApp
+    document.getElementById('rsvpForm').addEventListener('submit', e=>{
       e.preventDefault();
-      const nama = document.getElementById('nama').value.trim();
-      const jumlah = document.getElementById('jumlah').value;
-      const kehadiran = document.getElementById('kehadiran').value;
-      const pesan = document.getElementById('pesan').value.trim();
-      const text = `Assalamu'alaikum, saya ingin konfirmasi kehadiran untuk acara ${pengantin.pria} & ${pengantin.wanita}.
-Nama: ${nama}
-Jumlah Tamu: ${jumlah}
-Kehadiran: ${kehadiran}
-Ucapan/Pesan: ${pesan}`;
-      const waText = encodeURIComponent(text);
-      window.open(`https://wa.me/${pengantin.waTujuan}?text=${waText}`, '_blank');
+      const nama=document.getElementById('nama').value;
+      const jumlah=document.getElementById('jumlah').value;
+      const kehadiran=document.getElementById('kehadiran').value;
+      const pesan=document.getElementById('pesan').value;
+      const text=`Assalamu'alaikum, saya ingin konfirmasi kehadiran.\nNama: ${nama}\nJumlah: ${jumlah}\nKehadiran: ${kehadiran}\nPesan: ${pesan}`;
+      const waText=encodeURIComponent(text);
+      window.open(`https://wa.me/6282323624177?text=${waText}`,'_blank');
     });
 
-    // === Footer year ===
-    document.getElementById('year').textContent = new Date().getFullYear();
+    document.getElementById('year').textContent=new Date().getFullYear();
 
-    // === Back to top ===
-    const toTop = document.getElementById('toTop');
-    window.addEventListener('scroll', ()=>{
-      if(window.scrollY > 500){ toTop.classList.add('show'); } 
-      else { toTop.classList.remove('show'); }
+    // to top
+    const toTop=document.getElementById('toTop');
+    window.addEventListener('scroll',()=>{
+      if(window.scrollY>500){toTop.style.opacity=1;toTop.style.pointerEvents="auto";}
+      else{toTop.style.opacity=0;toTop.style.pointerEvents="none";}
     });
-    toTop.addEventListener('click', ()=> window.scrollTo({top:0, behavior:'smooth'}));
+    toTop.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
   </script>
 </body>
 </html>
