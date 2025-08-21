@@ -105,13 +105,13 @@
         .section-arab{direction:rtl; margin-bottom: 1rem; font-size: 2rem;}
         .section-sub{color:#7d6a58;margin:0 auto 1rem; text-align:center;font-family:'Quicksand', sans-serif; line-height: 1.4; max-width: 600px;}
         .grid{display:grid;gap:1rem; justify-content: center;}
-        .grid-2, .grid-3 {
+        .grid-2 {
             grid-template-columns: 1fr;
             justify-items: center;
         }
         @media (min-width: 768px) {
             .grid-2 {
-                grid-template-columns: repeat(2, minmax(200px, 400px));
+                grid-template-columns: repeat(2, 1fr);
             }
         }
         .couple-card { text-align: center; max-width: 400px; }
@@ -169,7 +169,7 @@
 
         /* Unified Card Width */
         .unified-card {
-            max-width: 400px; /* Set a specific max-width for uniformity */
+            max-width: 400px;
             width: 100%;
             margin: auto auto 1rem;
         }
@@ -255,6 +255,14 @@
         .copy-btn:hover {
             background-color: #a5865b;
         }
+
+        /* Override .grid-2 for vertical layout on all screen sizes */
+        .couple-section .grid-2,
+        .event-section .grid-2,
+        .gift-section .grid-2 {
+            grid-template-columns: 1fr;
+            justify-items: center;
+        }
     </style>
 </head>
 <body>
@@ -293,7 +301,7 @@
                 </div>
             </div>
         </header>
-        <section class="container" id="couple">
+        <section class="container couple-section" id="couple">
             <h2 class="section-title section-arab">بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</h2>
             <p class="section-sub">
                 Atas berkat rahmat dan ridho Allah SWT,<br>
@@ -315,7 +323,7 @@
             </div>
         </section>
         <div class="divider container"></div>
-        <section class="container" id="event">
+        <section class="container event-section" id="event">
             <h2 class="section-title">Rangkaian Acara</h2>
             <div class="grid grid-2">
                 <div class="card fade-in unified-card">
@@ -340,7 +348,7 @@
         </section>
         
         <div class="divider container"></div>
-        <section class="container" id="gift">
+        <section class="container gift-section" id="gift">
             <h2 class="section-title">Wedding Gift</h2>
             <p class="section-sub">
 Doa restu Anda merupakan karunia yang sangat berarti bagi kami. Apabila memberi adalah ungkapan tanda kasih Anda, maka Anda dapat memberikan kado secara nontunai.
