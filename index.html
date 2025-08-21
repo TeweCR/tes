@@ -76,17 +76,15 @@
             z-index: -1;
         }
         .hero{position:relative;min-height:88vh;display:grid;place-items:center;overflow:hidden;}
-        /* --- PERBAIKAN: Padding pada hero-inner dikurangi --- */
         .hero-inner{text-align:center;padding:2rem 1rem}
         .badge{display:inline-block;padding:.5rem 1rem;background: rgba(255,255,255,0.3); border-radius:999px; color:var(--brown-700); letter-spacing:.08em; font-size:.8rem; backdrop-filter: blur(6px);}
         h1.names{font-family:"Great Vibes", cursive;font-weight:400;font-size:clamp(2.6rem,6vw,4.8rem);letter-spacing:.02em;color:var(--brown-700); line-height:1.2}
         h1.names span{display:block;opacity:0;transform:translateY(20px);transition: all 0.8s ease-out;}
         h1.names span.show{opacity:1;transform:translateY(0);}
         .and{font-family:'Playfair Display', serif;font-weight:400;color:var(--accent)}
-        .card, .event-card, .couple-card {
+        .card, .event-card, .couple-card, .gift-card {
             width:100%;
-            max-width:500px;
-            /* --- PERBAIKAN: Margin bottom dikurangi --- */
+            max-width:500px; /* Base max-width for all cards */
             margin:auto auto 1rem;
             padding:1.5rem;
             border-radius:1.5rem;
@@ -98,16 +96,21 @@
         }
         .hero-card .item,.card ul{margin-bottom:.8rem;}
         .event-card div{margin-bottom:.8rem;text-align:center;}
-        /* --- PERBAIKAN: Padding section dikurangi --- */
         section{padding:1.5rem 0; text-align:center;}
         .section-title{font-family:'Quicksand', sans-serif;font-size:clamp(1.6rem,3.5vw,2.4rem);margin:0 0 .6rem;color:var(--brown-700);text-align:center;}
         .section-arab{direction:rtl; margin-bottom: 1rem; font-size: 2rem;}
-        /* --- PERBAIKAN: Margin bottom pada sub-judul dikurangi --- */
         .section-sub{color:#7d6a58;margin:0 auto 1rem; text-align:center;font-family:'Quicksand', sans-serif; line-height: 1.4; max-width: 600px;}
         .grid{display:grid;gap:1rem; justify-content: center;}
-        .grid-2{grid-template-columns:1fr}
-        .grid-3{grid-template-columns:1fr}
-        .couple-card { text-align: center; }
+        .grid-2, .grid-3 {
+            grid-template-columns: 1fr;
+            justify-items: center;
+        }
+        @media (min-width: 768px) {
+            .grid-2 {
+                grid-template-columns: repeat(2, minmax(200px, 400px));
+            }
+        }
+        .couple-card { text-align: center; max-width: 400px; }
         .avatar{width:160px;height:160px;border-radius:50%;object-fit:cover;border:6px solid rgba(255,255,255,0.2);box-shadow:0 10px 26px rgba(0,0,0,.08);display:block;margin:0 auto;}
         .couple-card{text-align:center;padding:2rem}
         .couple-name{font-family:"Great Vibes", cursive;font-weight:400;font-size:2rem;margin:.8rem 0 .3rem;color:var(--brown-700)}
@@ -120,7 +123,6 @@
         input, textarea, select{width:100%;padding:.8rem 1rem;border-radius:.8rem;background: rgba(255,255,255,0.2);border:1px solid rgba(255,255,255,0.3);backdrop-filter: blur(6px);color: var(--text);}
         label{font-weight:600;color:#6b5a4a}
         footer{padding:2rem 0;text-align:center;color:#6c5847;font-family:'Quicksand', sans-serif;}
-        /* --- PERBAIKAN: Margin pada divider dikurangi --- */
         .divider{height:1px;background:linear-gradient(90deg,transparent, rgba(255,255,255,0.3), transparent);margin:1.5rem auto; width: 80%;}
         .fade-in {opacity:0;transform:translateY(30px);transition: opacity .8s ease-out, transform .8s ease-out;}
         .fade-in.show {opacity:1;transform:translateY(0);}
@@ -161,6 +163,18 @@
             color: #7a6756;
         }
 
+        /* Unified Card Width */
+        .unified-card {
+            max-width: 400px; /* Set a specific max-width for uniformity */
+            width: 100%;
+            margin: auto auto 1rem;
+        }
+        .couple-card, .gift-card, .event-card, .card.fade-in, form {
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
         /* === Floating buttons (revisi) === */
         .floating-buttons {
             position: fixed;
@@ -188,7 +202,7 @@
             cursor: pointer;
             transition: all 0.2s ease-in-out;
             text-decoration: none;
-            border: none; /* Tambahkan ini agar tombol tidak memiliki border bawaan */
+            border: none;
         }
         .floating-buttons a:hover, .floating-buttons button:hover {
             transform: scale(1.05);
@@ -216,6 +230,7 @@
         /* Gift Card Styles */
         .gift-card {
             padding: 2rem;
+            max-width: 400px;
         }
         .gift-card img {
             width: 120px;
@@ -258,12 +273,12 @@
                     <span class="and">&</span>
                     <span>Chusnul Maisah</span>
                 </h1>
-                <div class="event-card fade-in" style="text-align:center; font-size:1rem; line-height:1.6;">
+                <div class="event-card fade-in unified-card" style="text-align:center; font-size:1rem; line-height:1.6;">
                     “ Di antara tanda-tanda (kebesaran)-Nya ialah bahwa Dia menciptakan pasangan-pasangan untukmu dari (jenis) dirimu sendiri agar kamu merasa tenteram kepadanya. Dia menjadikan di antaramu rasa cinta dan kasih sayang. Sesungguhnya pada yang demikian itu benar-benar terdapat tanda-tanda (kebesaran Allah) bagi kaum yang berpikir. ”
                     <br><br>
                     <strong style="font-family:'Quicksand', sans-serif;">{ Q.S : Ar-Rum (30) : 21 }</strong>
                 </div>
-                <div class="card fade-in">
+                <div class="card fade-in unified-card">
                     <p style="font-size:1.2rem; margin-bottom: 1rem; color:var(--brown-700);">Minggu, 28 Desember 2025</p>
                     <div id="countdown" class="countdown-container"></div>
                     <p style="margin-top: 1.5rem; font-size: 1rem;">Bayan Krajan RT 05 RW 15, Kadipiro, Banjarsari, Surakarta.</p>
@@ -280,13 +295,13 @@
                 izinkan kami menyampaikan kabar bahagia tentang rencana penyelenggaraan akad dan resepsi pernikahan putra-putri kami.
             </p>
             <div class="grid grid-2">
-                <article class="card couple-card fade-in">
+                <article class="card couple-card fade-in unified-card">
                     <img class="avatar" src="https://raw.githubusercontent.com/tewetech/tes/refs/heads/main/Tri2.jpg" alt="Foto Tri Wantoro"/>
                     <h3 class="couple-name">Tri Wantoro</h3>
                     <p class="parents">Anak Ke 3 dari :<br>
                     Bpk. Sudi Karyono & Ibu Ngasirah</p>
                 </article>
-                <article class="card couple-card fade-in">
+                <article class="card couple-card fade-in unified-card">
                     <img class="avatar" src="https://raw.githubusercontent.com/tewetech/tes/refs/heads/main/Chusnul2.jpg" alt="Foto Chusnul Maisah"/>
                     <h3 class="couple-name">Chusnul Maisah</h3>
                     <p class="parents">Anak Ke 5 dari :<br>
@@ -298,7 +313,7 @@
         <section class="container" id="event">
             <h2 class="section-title">Rangkaian Acara</h2>
             <div class="grid grid-2">
-                <div class="card fade-in">
+                <div class="card fade-in unified-card">
                     <h3 class="couple-name" style="font-family:'Quicksand', sans-serif; font-size:1.3rem; text-align: left;">Akad Nikah :</h3>
                     <ul class="timeline">
                         <li><span class="dot"></span><strong>Tanggal</strong>: Minggu, 28 Desember 2025</li>
@@ -307,7 +322,7 @@
 </li>
                     </ul>
                 </div>
-                <div class="card fade-in">
+                <div class="card fade-in unified-card">
                     <h3 class="couple-name" style="font-family:'Quicksand', sans-serif; font-size:1.3rem; text-align: left;">Resepsi :</h3>
                     <ul class="timeline">
                         <li><span class="dot"></span><strong>Tanggal</strong>: Minggu, 28 Desember 2025</li>
@@ -326,13 +341,13 @@
 Doa restu Anda merupakan karunia yang sangat berarti bagi kami. Apabila memberi adalah ungkapan tanda kasih Anda, maka Anda dapat memberikan kado secara nontunai.
             </p>
             <div class="grid grid-2">
-                <div class="card gift-card fade-in">
+                <div class="card gift-card fade-in unified-card">
                     <img src="https://upload.wikimedia.org/wikipedia/commons/7/72/Logo_dana_blue.svg" alt="Logo DANA"/>
                     <p>a.n. TRI WANTORO</p>
                     <p class="account-number" id="account-tri">082323624177</p>
                     <button class="btn copy-btn" data-target="#account-tri">Salin Nomor</button>
                 </div>
-                <div class="card gift-card fade-in">
+                <div class="card gift-card fade-in unified-card">
                     <img src="https://upload.wikimedia.org/wikipedia/commons/7/72/Logo_dana_blue.svg" alt="Logo DANA"/>
                     <p>a.n. CHUSNUL MAISAH</p>
                     <p class="account-number" id="account-chusnul">088970623200</p>
@@ -343,7 +358,7 @@ Doa restu Anda merupakan karunia yang sangat berarti bagi kami. Apabila memberi 
         <section class="container" id="rsvp">
             <h2 class="section-title">Konfirmasi Kehadiran</h2>
             <p class="section-sub">Mohon konfirmasi kehadiran Anda melalui WhatsApp.</p>
-            <div class="card fade-in">
+            <div class="card fade-in unified-card">
                 <form id="rsvpForm">
                     <div>
                         <label for="nama">Nama</label>
@@ -366,7 +381,7 @@ Doa restu Anda merupakan karunia yang sangat berarti bagi kami. Apabila memberi 
             </div>
         </section>
         <footer>
-            <div class="container card fade-in">
+            <div class="container card fade-in unified-card">
                 © <span id="year"></span> Copyright By Tewe TECH<br>
                 <strong>• Tri Wantoro & Chusnul Maisah •</strong><br>
                 Terima kasih atas doa dan kehadiran Anda.
@@ -470,7 +485,7 @@ Doa restu Anda merupakan karunia yang sangat berarti bagi kami. Apabila memberi 
         document.getElementById('year').textContent=new Date().getFullYear();
 
         // Fade-in scroll
-        const faders = document.querySelectorAll('.card, .couple-card, .event-card');
+        const faders = document.querySelectorAll('.card, .couple-card, .event-card, .unified-card');
         const appearOptions = { threshold: 0.1 };
         const appearOnScroll = new IntersectionObserver((entries)=>{
             entries.forEach(entry => {
