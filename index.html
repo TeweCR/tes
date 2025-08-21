@@ -7,7 +7,7 @@
     <meta name="description" content="Undangan pernikahan Tri Wantoro & Chusnul Maisah – 28 Desember 2025 di Kadipiro, Kota Surakarta, Jawa Tengah." />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Parisienne&family=Quicksand:wght@300;400;500;600&family=Playfair+Display&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Quicksand:wght@300;400;500;600&family=Playfair+Display&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
         :root{
@@ -48,6 +48,7 @@
         .door span{display:block;opacity:0;transform:translateY(20px);transition: all 0.8s ease-out;}
         .door span.show{opacity:1;transform:translateY(0);}
         .door p{font-family:'Quicksand', sans-serif; font-size:1.8rem; color:var(--brown-700);}
+        .door .door-title { font-family: 'Great Vibes', cursive; font-size: 2.5rem; }
         .btn{
             appearance:none;border:0;border-radius:999px;padding:.9rem 1.4rem;
             font-weight:600;cursor:pointer;transition:.25s;box-shadow:0 6px 18px rgba(0,0,0,.15);
@@ -78,7 +79,7 @@
         /* --- PERBAIKAN: Padding pada hero-inner dikurangi --- */
         .hero-inner{text-align:center;padding:2rem 1rem}
         .badge{display:inline-block;padding:.5rem 1rem;background: rgba(255,255,255,0.3); border-radius:999px; color:var(--brown-700); letter-spacing:.08em; font-size:.8rem; backdrop-filter: blur(6px);}
-        h1.names{font-family:"Parisienne", cursive;font-weight:400;font-size:clamp(2.6rem,6vw,4.8rem);letter-spacing:.02em;color:var(--brown-700); line-height:1.2}
+        h1.names{font-family:"Great Vibes", cursive;font-weight:400;font-size:clamp(2.6rem,6vw,4.8rem);letter-spacing:.02em;color:var(--brown-700); line-height:1.2}
         h1.names span{display:block;opacity:0;transform:translateY(20px);transition: all 0.8s ease-out;}
         h1.names span.show{opacity:1;transform:translateY(0);}
         .and{font-family:'Playfair Display', serif;font-weight:400;color:var(--accent)}
@@ -109,7 +110,7 @@
         .couple-card { text-align: center; }
         .avatar{width:160px;height:160px;border-radius:50%;object-fit:cover;border:6px solid rgba(255,255,255,0.2);box-shadow:0 10px 26px rgba(0,0,0,.08);display:block;margin:0 auto;}
         .couple-card{text-align:center;padding:2rem}
-        .couple-name{font-family:"Parisienne", cursive;font-weight:400;font-size:2rem;margin:.8rem 0 .3rem;color:var(--brown-700)}
+        .couple-name{font-family:"Great Vibes", cursive;font-weight:400;font-size:2rem;margin:.8rem 0 .3rem;color:var(--brown-700)}
         .parents{font-size:.95rem;color:#7a6756;font-family:'Quicksand', sans-serif;}
         .timeline{position:relative;margin:0;padding:0;list-style:none;font-family:'Quicksand', sans-serif; text-align: left;}
         .timeline::before{content:"";position:absolute;left:10px;top:0;bottom:0;width:2px;background:rgba(255,255,255,0.3)}
@@ -240,7 +241,7 @@
 <body>
     <div class="door-overlay" id="door">
         <div class="door">
-            <span>Undangan Pernikahan</span>
+            <span class="door-title">Undangan Pernikahan</span>
             <span>Tri Wantoro</span>
             <span class="and">&</span>
             <span>Chusnul Maisah</span>
@@ -365,7 +366,7 @@ Doa restu Anda merupakan karunia yang sangat berarti bagi kami. Apabila memberi 
             </div>
         </section>
         <footer>
-            <div class="container">
+            <div class="container card fade-in">
                 © <span id="year"></span> Copyright By Tewe TECH<br>
                 <strong>• Tri Wantoro & Chusnul Maisah •</strong><br>
                 Terima kasih atas doa dan kehadiran Anda.
