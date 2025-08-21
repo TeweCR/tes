@@ -59,6 +59,10 @@
         }
         .btn:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(0,0,0,.25)}
         .btn:active{transform:scale(.97)}
+        .door-name { font-family: 'Great Vibes', cursive; font-size: 2.5rem; display: block; }
+        .door-to { font-size: 1.2rem; margin-top: 1rem; }
+        .door-note { font-size: 0.8rem; margin-top: 0.5rem; }
+        .guest-name { font-family: 'Great Vibes', cursive; font-size: 2rem; color: var(--brown-700); margin-top: 0.5rem; }
 
         /* === UNDANGAN === */
         main{
@@ -256,13 +260,11 @@
 <body>
     <div class="door-overlay" id="door">
         <div class="door">
-            <span class="door-title">Undangan Pernikahan</span>
-            <p id="greeting-text" style="font-size: 1.2rem; margin-top: 1rem;">Kepada Yth. Bapak/Ibu/Saudara/i:</p>
-            <span id="guest-name" style="font-size: 1.8rem;"></span>
-            <br>
-            <span>Tri Wantoro</span>
-            <span class="and">&</span>
-            <span>Chusnul Maisah</span>
+            <span>Undangan Pernikahan</span>
+            <span class="door-name">Tri Wantoro & Chusnul Maisah</span>
+            <span class="door-to">Kepada Yth. Bapak/Ibu/Saudara/i:</span>
+            <span id="guestName" class="guest-name"></span>
+            <span class="door-note">* Mohon maaf apabila ada kesalahan penulisan nama/gelar</span>
             <button class="btn" id="openBtn">📩 Buka Undangan</button>
         </div>
     </div>
@@ -411,32 +413,25 @@ Doa restu Anda merupakan karunia yang sangat berarti bagi kami. Apabila memberi 
     </main>
 
     <script>
-        // === SCRIPT BARU UNTUK NAMA DARI URL ===
-        const greetingElement = document.getElementById('greeting-text');
-        const guestNameElement = document.getElementById('guest-name');
-        
-        function getUrlParameter(name) {
-            name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
-            var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
-            var results = regex.exec(location.search);
-            return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
-        }
-        
-        const guestName = getUrlParameter('to');
-        if (guestName) {
-            guestNameElement.textContent = guestName;
-        } else {
-            greetingElement.style.display = 'none';
-            guestNameElement.style.display = 'none';
-        }
-        
-        // === SCRIPT LAMA YANG DIKOMBINASIKAN ===
         const door = document.getElementById('door');
         const openBtn = document.getElementById('openBtn');
         const bgMusic = document.getElementById('bgMusic');
         const main = document.querySelector('main');
         const musicToggleBtn = document.getElementById('music-toggle-btn');
         const musicIcon = document.getElementById('music-icon');
+        const guestNameElement = document.getElementById('guestName');
+
+        // Function to get guest name from URL parameter
+        function getGuestName() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const name = urlParams.get('to');
+            if (name) {
+                guestNameElement.textContent = decodeURIComponent(name.replace(/\+/g, ' '));
+            } else {
+                guestNameElement.textContent = 'Tamu Istimewa Kami';
+            }
+        }
+        getGuestName();
 
         openBtn.addEventListener('click', ()=>{
             bgMusic.play();
@@ -446,6 +441,7 @@ Doa restu Anda merupakan karunia yang sangat berarti bagi kami. Apabila memberi 
             document.body.style.overflow="auto";
         });
 
+        // Event listener untuk tombol play/pause
         musicToggleBtn.addEventListener('click', () => {
             if (bgMusic.paused) {
                 bgMusic.play();
@@ -506,6 +502,7 @@ Doa restu Anda merupakan karunia yang sangat berarti bagi kami. Apabila memberi 
 
         document.getElementById('year').textContent=new Date().getFullYear();
 
+        // Fade-in scroll
         const faders = document.querySelectorAll('.card, .couple-card, .event-card, .unified-card');
         const appearOptions = { threshold: 0.1 };
         const appearOnScroll = new IntersectionObserver((entries)=>{
@@ -519,12 +516,15 @@ Doa restu Anda merupakan karunia yang sangat berarti bagi kami. Apabila memberi 
             appearOnScroll.observe(fader);
         });
 
+        // Door animation per line
         const doorSpans = document.querySelectorAll('.door span');
         doorSpans.forEach((span,i)=>{setTimeout(()=>{span.classList.add('show');}, i*400);});
 
+        // Nama pengantin animasi per baris
         const nameSpans = document.querySelectorAll('h1.names span');
         nameSpans.forEach((span,i)=>{setTimeout(()=>{span.classList.add('show');}, i*500);});
 
+        // Copy button functionality
         document.querySelectorAll('.copy-btn').forEach(button => {
             button.addEventListener('click', () => {
                 const targetSelector = button.getAttribute('data-target');
