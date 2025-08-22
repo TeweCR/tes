@@ -29,8 +29,10 @@
         }
         img{max-width:100%;display:block}
         a{color:var(--brown-700);text-underline-offset:3px}
-        .container{width:min(1100px,92%);margin-inline:auto}
-
+        .container{
+            width:min(400px, 92%);
+            margin-inline:auto;
+        }
         /* === DOOR === */
         .door-overlay{
             position:fixed;inset:0;display:flex;justify-content:center;align-items:center;
@@ -63,7 +65,6 @@
         .door-to { font-size: 1.0rem; margin-top: 1rem; }
         .door-note { font-size: 0.5rem; margin-top: 0.5rem; }
         .guest-name { font-family: 'Great Vibes', cursive; font-size: 1.8rem; color: var(--brown-700); margin-top: 0.5rem; }
-
         /* === UNDANGAN === */
         main{
             display:none;
@@ -82,13 +83,13 @@
         .hero{position:relative;min-height:88vh;display:grid;place-items:center;overflow:hidden;}
         .hero-inner{text-align:center;padding:2rem 1rem}
         .badge{display:inline-block;padding:.5rem 1rem;background: rgba(255,255,255,0.3); border-radius:999px; color:var(--brown-700); letter-spacing:.08em; font-size:.8rem; backdrop-filter: blur(6px);}
-        h1.names{font-family:"Great Vibes", cursive;font-weight:400;font-size:clamp(2.6rem,6vw,4.8rem);letter-spacing:.02em;color:var(--brown-700); line-height:1.2}
+        h1.names{font-family:"Great Vibes", cursive;font-weight:400;font-size:clamp(2.6rem,6vw,2.6rem);letter-spacing:.02em;color:var(--brown-700); line-height:1.2}
         h1.names span{display:block;opacity:0;transform:translateY(20px);transition: all 0.8s ease-out;}
         h1.names span.show{opacity:1;transform:translateY(0);}
         .and{font-family:'Playfair Display', serif;font-weight:400;color:var(--accent)}
         .card, .event-card, .couple-card, .gift-card {
-            width:100%;
-            max-width:500px; /* Base max-width for all cards */
+            width:80%;
+            max-width:320px;
             margin:auto auto 1rem;
             padding:1.5rem;
             border-radius:1.5rem;
@@ -98,21 +99,25 @@
             box-shadow:0 8px 20px rgba(0,0,0,0.1);
             font-family:'Quicksand', sans-serif;
         }
+        
+        /* Revised Styles for the card with date and address */
+        .card.no-glass {
+            background: none;
+            border: none;
+            backdrop-filter: none;
+            box-shadow: none;
+        }
+        
         .hero-card .item,.card ul{margin-bottom:.8rem;}
         .event-card div{margin-bottom:.8rem;text-align:center;}
         section{padding:1.5rem 0; text-align:center;}
         .section-title{font-family:'Quicksand', sans-serif;font-size:clamp(1.6rem,3.5vw,2.4rem);margin:0 0 .6rem;color:var(--brown-700);text-align:center;}
         .section-arab{direction:rtl; margin-bottom: 1rem; font-size: 2rem;}
-        .section-sub{color:#7d6a58;margin:0 auto 1rem; text-align:center;font-family:'Quicksand', sans-serif; line-height: 1.4; max-width: 600px;}
+        .section-sub{color:#7d6a58;margin:0 auto 1rem; text-align:center;font-family:'Quicksand', sans-serif; line-height: 1.4; max-width: 400px; font-size: 0.85rem;} /* Adjusted font-size */
         .grid{display:grid;gap:1rem; justify-content: center;}
         .grid-2 {
             grid-template-columns: 1fr;
             justify-items: center;
-        }
-        @media (min-width: 768px) {
-            .grid-2 {
-                grid-template-columns: repeat(2, 1fr);
-            }
         }
         .couple-card { text-align: center; max-width: 400px; }
         .avatar{width:160px;height:160px;border-radius:50%;object-fit:cover;border:6px solid rgba(255,255,255,0.2);box-shadow:0 10px 26px rgba(0,0,0,.08);display:block;margin:0 auto;}
@@ -121,17 +126,16 @@
         .parents{font-size:.95rem;color:#7a6756;font-family:'Quicksand', sans-serif;}
         .timeline{position:relative;margin:0;padding:0;list-style:none;font-family:'Quicksand', sans-serif; text-align: left;}
         .timeline::before{content:"";position:absolute;left:10px;top:0;bottom:0;width:2px;background:rgba(255,255,255,0.3)}
-        .timeline li{position:relative;padding-left:2.2rem;margin-bottom:1rem}
+        .timeline li{position:relative;padding-left:2.2rem;margin-bottom:1rem; font-size: 0.85rem;} /* Adjusted font-size */
         .dot{position:absolute;left:2px;top:.3rem;width:16px;height:16px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4 rgba(255,255,255,0.2)}
         form{display:grid;gap:.8rem;font-family:'Quicksand', sans-serif;}
-        input, textarea, select{width:100%;padding:.8rem 1rem;border-radius:.8rem;background: rgba(255,255,255,0.2);border:1px solid rgba(255,255,255,0.3);backdrop-filter: blur(6px);color: var(--text);}
-        label{font-weight:600;color:#6b5a4a}
-        footer{padding:2rem 0;text-align:center;color:#6c5847;font-family:'Quicksand', sans-serif;}
+        input, textarea, select{width:100%;padding:.7rem 0.9rem;border-radius:.7rem;background: rgba(255,255,255,0.2);border:1px solid rgba(255,255,255,0.3);backdrop-filter: blur(6px);color: var(--text); font-size: 0.9rem;} /* Adjusted font-size and padding */
+        label{font-weight:600;color:#6b5a4a; font-size: 0.9rem;} /* Adjusted font-size */
+        footer{padding:2rem 0;text-align:center;color:#6c5847;font-family:'Quicksand', sans-serif; font-size: 0.85rem;} /* Adjusted font-size */
         .divider{height:1px;background:linear-gradient(90deg,transparent, rgba(255,255,255,0.3), transparent);margin:1.5rem auto; width: 80%;}
         .fade-in {opacity:0;transform:translateY(30px);transition: opacity .8s ease-out, transform .8s ease-out;}
         .fade-in.show {opacity:1;transform:translateY(0);}
-        .event-card .couple-name {text-align: left !important;}
-
+        .event-card .couple-name {text-align: left !important; font-size: 1.1rem;} /* Adjusted font-size */
         /* Countdown specific styles */
         .countdown-container {
             display: flex;
@@ -166,7 +170,6 @@
             text-transform: uppercase;
             color: #7a6756;
         }
-
         /* Unified Card Width */
         .unified-card {
             max-width: 400px;
@@ -178,7 +181,6 @@
             margin-left: auto;
             margin-right: auto;
         }
-        
         /* === Floating buttons (revisi) === */
         .floating-buttons {
             position: fixed;
@@ -194,15 +196,15 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 44px;
-            height: 44px;
+            width: 38px;
+            height: 38px;
             border-radius: 50%;
             background: rgba(255, 255, 255, 0.3);
             border: 1px solid rgba(255, 255, 255, 0.4);
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(4px);
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
             color: var(--brown-700);
-            font-size: 1.2rem;
+            font-size: 0.85rem;
             cursor: pointer;
             transition: all 0.2s ease-in-out;
             text-decoration: none;
@@ -212,25 +214,30 @@
             transform: scale(1.05);
             background: rgba(255, 255, 255, 0.5);
         }
+        /* Revised .map-btn style to have glass effect */
         .map-btn{
             display: inline-flex;
             align-items: center;
             justify-content: center;
             gap: 0.5rem;
             padding: 0.8rem 1.6rem;
-            background-color: var(--brown-700);
-            color: #fff;
+            background: rgba(255, 255, 255, 0.15);
+            color: var(--brown-700);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
             text-decoration: none;
             border-radius: 999px;
-            font-weight: 500;
+            font-weight: 600;
             font-size: 0.9rem;
             margin-top: 1rem;
-            transition: background-color 0.2s ease;
+            box-shadow: 0 6px 18px rgba(0,0,0,.15);
+            transition: all 0.25s ease;
         }
         .map-btn:hover{
-            background-color: #4b382d;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 22px rgba(0,0,0,.25);
+            background: rgba(255, 255, 255, 0.25);
         }
-        
         /* Gift Card Styles */
         .gift-card {
             padding: 2rem;
@@ -241,7 +248,7 @@
             margin: 0 auto 1rem;
         }
         .gift-card .account-number {
-            font-size: 1.3rem;
+            font-size: 1rem; /* Adjusted font-size */
             font-weight: 600;
             color: var(--brown-700);
             margin: .5rem 0 1rem;
@@ -255,7 +262,6 @@
         .copy-btn:hover {
             background-color: #a5865b;
         }
-
         /* Override .grid-2 for vertical layout on all screen sizes */
         .couple-section .grid-2,
         .event-section .grid-2,
@@ -286,15 +292,15 @@
                     <span class="and">&</span>
                     <span>Chusnul Maisah</span>
                 </h1>
-                <div class="event-card fade-in unified-card" style="text-align:center; font-size:1rem; line-height:1.6;">
+                <div class="event-card fade-in unified-card" style="text-align:center; font-size:0.85rem; line-height:1.6;">
                     “ Di antara tanda-tanda (kebesaran)-Nya ialah bahwa Dia menciptakan pasangan-pasangan untukmu dari (jenis) dirimu sendiri agar kamu merasa tenteram kepadanya. Dia menjadikan di antaramu rasa cinta dan kasih sayang. Sesungguhnya pada yang demikian itu benar-benar terdapat tanda-tanda (kebesaran Allah) bagi kaum yang berpikir. ”
                     <br><br>
                     <strong style="font-family:'Quicksand', sans-serif;">{ Q.S : Ar-Rum (30) : 21 }</strong>
                 </div>
-                <div class="card fade-in unified-card">
-                    <p style="font-size:1.2rem; margin-bottom: 1rem; color:var(--brown-700);">Minggu, 28 Desember 2025</p>
+                <div class="card fade-in unified-card no-glass">
+                    <p style="font-size:0.85rem; margin-bottom: 1rem; color:var(--brown-700);">Minggu, 28 Desember 2025</p>
                     <div id="countdown" class="countdown-container"></div>
-                    <p style="margin-top: 1.5rem; font-size: 1rem;">Bayan Krajan RT 05 RW 15, Kadipiro, Banjarsari, Surakarta.</p>
+                    <p style="margin-top: 1.5rem; font-size: 0.85rem;">Bayan Krajan RT 05 RW 15, Kadipiro, Banjarsari, Surakarta.</p>
                     <a href="https://maps.app.goo.gl/cNHPfjraAu2V5p4n6" class="map-btn" target="_blank" rel="noopener noreferrer">
                         <i class="fa-solid fa-map-location-dot"></i> Lihat di Google Maps
                     </a>
@@ -304,20 +310,22 @@
         <section class="container couple-section" id="couple">
             <h2 class="section-title section-arab">بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</h2>
             <p class="section-sub">
-                Atas berkat rahmat dan ridho Allah SWT,<br>
-                izinkan kami menyampaikan kabar bahagia tentang rencana penyelenggaraan akad dan resepsi pernikahan putra-putri kami.
+                Atas berkat rahmat dan ridho Allah SWT,
+                izinkan kami menyampaikan kabar bahagia
+                tentang rencana penyelenggaraan akad dan resepsi
+                pernikahan putra-putri kami.
             </p>
             <div class="grid grid-2">
                 <article class="card couple-card fade-in unified-card">
                     <img class="avatar" src="https://raw.githubusercontent.com/tewetech/tes/refs/heads/main/Tri2.jpg" alt="Foto Tri Wantoro"/>
                     <h3 class="couple-name">Tri Wantoro</h3>
-                    <p class="parents">Anak Ke 3 dari :<br>
+                    <p class="parents">Putra Ke 3 dari :<br>
                     Bpk. Sudi Karyono & Ibu Ngasirah</p>
                 </article>
                 <article class="card couple-card fade-in unified-card">
                     <img class="avatar" src="https://raw.githubusercontent.com/tewetech/tes/refs/heads/main/Chusnul2.jpg" alt="Foto Chusnul Maisah"/>
                     <h3 class="couple-name">Chusnul Maisah</h3>
-                    <p class="parents">Anak Ke 5 dari :<br>
+                    <p class="parents">Putri Ke 5 dari :<br>
                     Bpk. Sularto & Ibu. Sri Mulyani, S.Pd.SD</p>
                 </article>
             </div>
@@ -327,7 +335,7 @@
             <h2 class="section-title">Rangkaian Acara</h2>
             <div class="grid grid-2">
                 <div class="card fade-in unified-card">
-                    <h3 class="couple-name" style="font-family:'Quicksand', sans-serif; font-size:1.3rem; text-align: left;">Akad Nikah :</h3>
+                    <h3 class="couple-name" style="font-family:'Quicksand', sans-serif; font-size:1.1rem; text-align: left;">Akad Nikah :</h3>
                     <ul class="timeline">
                         <li><span class="dot"></span><strong>Tanggal</strong>: Minggu, 28 Desember 2025</li>
                         <li><span class="dot"></span><strong>Waktu</strong>: 08.00 WIB</li>
@@ -336,7 +344,7 @@
                     </ul>
                 </div>
                 <div class="card fade-in unified-card">
-                    <h3 class="couple-name" style="font-family:'Quicksand', sans-serif; font-size:1.3rem; text-align: left;">Resepsi :</h3>
+                    <h3 class="couple-name" style="font-family:'Quicksand', sans-serif; font-size:1.1rem; text-align: left;">Resepsi :</h3>
                     <ul class="timeline">
                         <li><span class="dot"></span><strong>Tanggal</strong>: Minggu, 28 Desember 2025</li>
                         <li><span class="dot"></span><strong>Waktu</strong>: 11.00 – 14.00 WIB</li>
@@ -368,6 +376,7 @@ Doa restu Anda merupakan karunia yang sangat berarti bagi kami. Apabila memberi 
                 </div>
             </div>
         </section>
+        <div class="divider container"></div>
         <section class="container" id="rsvp">
             <h2 class="section-title">Konfirmasi Kehadiran</h2>
             <p class="section-sub">Mohon konfirmasi kehadiran Anda melalui WhatsApp.</p>
